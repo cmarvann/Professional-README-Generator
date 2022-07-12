@@ -1,23 +1,19 @@
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-console.log(profileDataArgs);
+// add fs statement
+const fs = require('fs');
+const generatePage = require('./src/page-template');
 
-// arrow function ES6
-const printProfileData = profileDataArr => {
-  profileDataArr.forEach(profileItem => console.log(profileItem));
-};
+// function that recieve the command line argument and 
+// insert in an HTML template literl
 
-// The print call for dynamic output 
-printProfileData(profileDataArgs);
+const profileDataArgs = process.argv.slice(2);
+const [name, github] = profileDataArgs;
+console.log(name, github);
 
+// The String 
 
-// console.log(generatePage('Marvann', 'cmarvannhub'));
-
-// // Multi-line Strings
-// const generatePage = (userName, githubName) => {
-//     return `
-//       Name: ${userName}
-//       GitHub: ${githubName}
-//     `;
-//   };
-//   console.log(Marvan, cmarvannhub);
+// End of argument
+fs.writeFile('index.html', generatePage(name, github), err => {
+    if (err) throw err;
+    console.log('See output, index.html!');
+  });
 
