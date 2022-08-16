@@ -5,7 +5,9 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const { writeFile, copyFile } = require('./utils/generate-markdown');
 
-// array
+
+let projects = []
+// ray
 const promptUser = () => {
     return inquirer.prompt([
       {
@@ -132,7 +134,7 @@ const promptProject = portfolioData => {
 
 ])
 .then(projectData => {
-  portfolioData.projects.push(projectData);
+  projects.push(projectData);
   if (projectData.confirmAddProject) {
     return promptProject(portfolioData);
   } else {
