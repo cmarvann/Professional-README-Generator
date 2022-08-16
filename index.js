@@ -5,8 +5,9 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // array
-let questions = [
-    {
+const promptUser = () => {
+    return inquirer.prompt([
+      {
         type: 'input',
         name: 'name',
         message: 'What is your name? (Required)',
@@ -38,21 +39,30 @@ let questions = [
             }
         }
     },
-
     {
+        type: 'confirm',
+        name: 'confirmAbout',
+        message: 'Enter some information about yourself for an "About" section!',
+        default: true
+      },
+      {
         type: 'input',
-        name: 'link',
-        message: 'Enter the GitHub link to your project. (Required)',
-        validate: linkInput => {
-            if (linkInput) {
-                return true;
-            } else {
-                console.log('Enter your project GitHub link!');
-                return false;
-            }
-        }
-    },
+        name: 'about',
+        message: 'Provide  information about yourself:',
+        when: ({ confirmAbout }) => confirmAbout
+      }
+    ]);
+};
+const promptProject = portfolioData => {
+    console.log(`
+  =================
+  ProfessionalREADME Project
+  =================
+  `);
 
+  return inquirer
+ .prompt([
+    
     {
         type: 'input',
         name: 'title',
@@ -80,23 +90,30 @@ let questions = [
             }
         }
     },
+     {
+        type: 'checkbox',
+        name: 'language',
+        message: 'What did you build this project with? (Check all that apply)',
+        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
+      },
+      {
+        type: 'input',
+        name: 'link',
+        message: 'Enter the GitHub link to your project. (Required)',
+        validate: linkInput => {
+            if (linkInput) {
+                return true;
+            } else {
+                console.log('Enter your project GitHub link!');
+                return false;
+            }
+        }
+    },
     {
         type: 'confirm',
         name: 'feature',
         message: 'Would you like to feature this project?',
         default: false
-      },
-      {
-        type: 'confirm',
-        name: 'confirmAddProject',
-        message: 'Would you like to enter another project?',
-        default: false
-      },
-    {
-        type: 'checkbox',
-        name: 'stack',
-        message: 'What did you build this project with? (Check all that apply)',
-        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
       },
     {
     type: 'input',
@@ -110,33 +127,30 @@ let questions = [
             return false;
         }
     }
-},
-
-];
-
-// Declare function
-function startQuestions(){
-
-    // prompt
-    inquirer.prompt(questions)
-    // grab answers
-    // .then(function(answers){
-    //  console.log(answers);
-    //  console.log(answers.title)
-    // })
-    .then(answers => {
-        fs.writeFile("example.md", generateMarkdown(answers), err => {
-            if (err) {
-                console.log(err);
-                return;
-              }
-              console.log('Style sheet copied successfully!');
-          
-        })
-    // }
-        // generateMarkdown(answers)
-    })
 }
-// call function - run function
-startQuestions()
+
+])
+.then(projectData => {
+  portfolioData.projects.push(projectData);
+  if (projectData.confirmAddProject) {
+    return promptProject(portfolioData);
+  } else {
+    return portfolioData;
+  }
+});
+
+ promptUser()
+   .then(promptProject)
+    .then(portfolioData => {
+      const pageHTML = generatePage(portfolioData);
+
+
+      fs.writeFile('./index.html', pageHTML, err => {
+        if (err) throw new Error(err);
+  
+        console.log('Page created! Check out index.html in this directory to see it!');
+      });
+    });
+}
+  
 
