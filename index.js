@@ -20,6 +20,12 @@ let questions = [
         }
     },
     {
+        type: 'list',
+        message: 'What is your preferred method of communication?',
+        name: 'contact',
+        choices: ['email', 'phone', 'github']
+      },
+    {
         type: 'input',
         name: 'github',
         message: 'Enter your GitHub Username (Required)',
@@ -74,6 +80,24 @@ let questions = [
             }
         }
     },
+    {
+        type: 'confirm',
+        name: 'feature',
+        message: 'Would you like to feature this project?',
+        default: false
+      },
+      {
+        type: 'confirm',
+        name: 'confirmAddProject',
+        message: 'Would you like to enter another project?',
+        default: false
+      },
+    {
+        type: 'checkbox',
+        name: 'stack',
+        message: 'What did you build this project with? (Check all that apply)',
+        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
+      },
     {
     type: 'input',
     name: 'license',
