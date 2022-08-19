@@ -3,7 +3,7 @@
 
 ## Description
 
-prof
+Professionla README.md
 
 ## Table of Contents 
 
@@ -64,14 +64,15 @@ The Rutgers Bot Camp Module 9
 
 ## License
 
-This project is licensed under the mit license.
+This project is licensed under the MIT license.
 
 ## Badges
+N/A
 
   
 ## Contributing
 
-Not Sure
+TA asiistance
 
 ## Tests
 
