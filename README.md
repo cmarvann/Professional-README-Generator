@@ -1,5 +1,5 @@
 # Professional-README-Generator
-<<<<<<< HEAD
+
 Create a command-line application that dynamically generates a professional README.md file based on user input
 * Create README using Inquirer package (npm i inquirer@8.2.4)
 * Submit link to walkthrough video that demonstrate the functionality  (screencastify)
@@ -57,5 +57,5 @@ AS A developer, i WANT a README generator so that  I can quickly create a profes
    Add to the README project.
    A sample README.md file for a project repository generated using your application.
 
-* The URL of the GitHub repository. Give the repository a unique name and include 
->>>>>>> develop
+* The URL of the GitHub repository.
+
