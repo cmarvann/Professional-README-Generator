@@ -28,7 +28,7 @@ This project is under the MIT license
 
 ## User Story
 
-AS A developer, i WANT a README generator so that  I can quickly create a professional README for a new project
+AS A developer, i WANT a README generator so that  I can quickly create a professional README for a new projec using generate readme
 
 
 ## Acceptance Criteria
