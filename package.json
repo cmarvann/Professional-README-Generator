@@ -1,7 +1,7 @@
 {
   "name": "professional-readme-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create a command-line application that dynamically generates a professional README.md file based on user input\r * Create README using Inquirer package (npm i inquirer@8.2.4)\r * Submit link to walkthrough video that demonstrate the functionality  (screencastify)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/cmarvann/Professional-README-Generator.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "MC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cmarvann/Professional-README-Generator/issues"
   },
   "homepage": "https://github.com/cmarvann/Professional-README-Generator#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
-  }
+  },
+  "devDependencies": {}
 }

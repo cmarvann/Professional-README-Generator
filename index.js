@@ -1,15 +1,12 @@
+const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generate-Markdown');
 
-// const fs = require('fs');
-
-const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./utils/generate-markdown');
-
-
-let projects = []
+  
 // ray
-const promptUser = () => {
-    return inquirer.prompt([
+const questions = [
+
       {
         type: 'input',
         name: 'name',
@@ -53,18 +50,13 @@ const promptUser = () => {
         name: 'about',
         message: 'Provide  information about yourself:',
         when: ({ confirmAbout }) => confirmAbout
-      }
-    ]);
-};
-const promptProject = portfolioData => {
-    console.log(`
-  =================
-  Professional README Project
-  =================
-  `);
-
-  return inquirer
- .prompt([
+      },
+      {
+        type: 'input',
+        name: 'project',
+        message: 'Would you like to add a project?:',
+        default:false
+      }, 
     
     {
         type: 'input',
@@ -118,10 +110,42 @@ const promptProject = portfolioData => {
         message: 'Would you like to feature this project?',
         default: false
       },
+
+      {
+        type: 'input',
+        name: 'installation',
+        message: 'What command should be run to install dependencies?',
+        default: 'npm i'
+      },
+      {
+        type: 'input',
+        name: 'usage',
+        message: 'What does the user need to know about using the repo?'
+      },
+      {
+        type: 'input',
+        name: 'contributing',
+        message: 'What does the user need to know about contributing to the repo?'
+      },
+      {
+        type: 'input',
+        name: 'test',
+        message: 'What command should be run to run tests?',
+        default: 'node index.js'
+      },
+      
+      
+      {
+        type: 'input',
+        name: 'add',
+        message: 'Would you like to add another project?:',
+        default:true
+      },
     {
     type: 'input',
     name: 'license',
     message: 'Enter your project License (Required)',
+    choices: ['MIT', 'ISC', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
     validate: licenseInput => {
         if (licenseInput) {
             return true;
@@ -132,32 +156,23 @@ const promptProject = portfolioData => {
     }
 }
 
-])
-.then(projectData => {
-  projects.push(projectData);
-  if (projectData.confirmAddProject) {
-    return promptProject(portfolioData);
-  } else {
-    return portfolioData;
-  }
-});
-};
+]
 
-promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-    return generatePage(portfolioData);
-  })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
-  })
-  .then(writeFileResponse => {
-    console.log(writeFileResponse);
-    return copyFile();
-  })
-  .then(copyFileResponse => {
-    console.log(copyFileResponse);
-  })
-  .catch(err => {
-    console.log(err);
+
+
+
+
+// Function to write README file using the user input
+function writeToFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
+// Function to initialize app
+function init() {
+  inquirer.prompt(questions).then(inquirerResponses => {
+    console.log('Generating README...');
+    writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
   });
+}
+
+init();
