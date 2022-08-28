@@ -25,7 +25,7 @@ A Professional ReadMEe Generator is a vital part of any developer world. This al
 
 * [Questions](#questions)
 
-<========================================================================================================================>
+
 ## User Story
 
 AS a developer, I want to generate a  README  so that I can 
@@ -54,23 +54,17 @@ quickly create a README file for a new projects
  - THEN I am taken to the corresponding section of the README
  
 
- <========================================================================================================================>
+ 
 
  ## Installation
 
-To install necessary dependencies, run the following command:
-
-Install: 
-
-npm i,  node.js and inquirer
-
 ```
-To install necessary dependencies, run the following command:Installnpm i,  node.js and inquirer
+To install necessary dependencies, run the following command:Install npm i,  node.js and inquirer
 ```
 
 ## Usage
 Feel free to use it for educational purposes 
-Feel free to use it for educational purposes 
+
 
 ## License
 
@@ -78,10 +72,10 @@ This project is licensed under the MIT license.
   
 ## Contributing
 
-This prject was done based on the Rutgers Bootcamp instructor guidance and the TA's assistance
+This project was done based on the Rutgers Bootcamp instructor guidance and the TA's assistance
 Thanks Amber Amber Robeck for your guidance
 
-This prject was done based on the Rutgers Bootcamp instructor guidance and the TA's assistance
+
 
 ## Tests
 
@@ -89,16 +83,13 @@ To run tests, run the following command:
 Before you test, make sure you have a .gitignore file in the root of your repository
 to prevent tracking 
 
-After yu have installed  all the reuired dependencies for yout application using the command
-line. In this project, I am using Node.js and inquirer 8.2.4
+After you have installed  all the reuired dependencies for your application using the command line. 
+In this project, I am using Node.js and inquirer 8.2.4
 To test, Run "node + filename". Here I am using "node index.js" and hit enter
 This should prompt you to answer a few questions, if you get an error, read the error, fix
 and start again 
 
 To run tests, run the following command:
-
-
-node index.js
 
 ```
 node index.js
@@ -134,7 +125,7 @@ If you have any questions about the repo, contact me directly at cmarvann. You c
   SOFTWARE.
 
 
-<========================================================================================================================>
+
 ## Links
  * Twitter - @Codish22
 
