@@ -1,6 +1,8 @@
 # Professional-README-Generator
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
+___
+
 ## Description
 A Professional ReadMEe Generator is a vital part of any developer world. This allows any developer to quickly 
 generate a REadMe for each project as needed.
